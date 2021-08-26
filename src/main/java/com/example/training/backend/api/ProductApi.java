@@ -1,6 +1,7 @@
 package com.example.training.backend.api;
 
 import com.example.training.backend.business.ProductBussiness;
+import com.example.training.backend.exception.BaseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,7 @@ public class ProductApi {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<String> getId(@PathVariable("id") String id){
+    public ResponseEntity<String> getId(@PathVariable("id") String id) throws BaseException {
         String response = bussiness.getProductById(id);
         return ResponseEntity.ok(response);
     }
